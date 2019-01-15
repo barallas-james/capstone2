@@ -1,0 +1,77 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Glegoo', serif;
+}
+
+.mt25{
+	margin-top: 25px;
+}
+
+.mb25{
+	margin-bottom: 25px;
+}
+
+.content{
+	min-height: 100vh;
+}
+
+.parallax{
+	background-image: url("../images/parallax-bg.jpg");
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.box{
+	background-color: rgb(255,255,255, 0.8);
+	text-align: center;
+	min-width: 40%;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%); /*x and y values*/  
+	border-radius: 12px;
+	color: black;
+}
+
+.box p{
+	font-size: 21px;
+}
+
+.modal{
+	max-width: 500px;
+}
+
+.registration{
+	border: 1px solid black;
+	border-radius: 15px;
+	padding: 40px;
+}
+
+.personalInfo{
+	border: 1px solid black;
+	border-radius: 15px;
+	padding: 20px;
+}
+
+.accountInfo{
+	border: 1px solid black;
+	border-radius: 15px;
+	padding: 20px;
+}
+
+.card .card-image .card-title{
+	background-color: rgb(255,255,255, 0.6);
+	border-radius: 12px;
+	color: black;
+}
+
+.card{
+		
+}
+
