@@ -2,6 +2,7 @@
 	require_once '../partials/layout.php'; 
 
 	function get_page_content() { 
+		if(!isset($_SESSION['logged_in_user']) || $_SESSION['logged_in_user']['role_id'] == 2  ) {
 ?>
 		<div class="content">
 			<?php require_once '../partials/header.php'; ?>
@@ -77,7 +78,7 @@
 				</div>
 
 				<div id="pants" class="col s12">
-					<h3>Pants And Polos</h3>
+					<h3>Pants</h3>
 
 					<div class="row">
 						<?php 
@@ -168,5 +169,9 @@
 	
 <?php 
 		require_once '../partials/footer.php';
+		} else {
+
+		header('Location: ./error.php');
+		}
 	}; 
 ?>

@@ -2,6 +2,8 @@
 	require_once '../partials/layout.php'; 
 
 	function get_page_content() { 
+
+		if(!isset($_SESSION['logged_in_user']) || $_SESSION['logged_in_user']['role_id'] == 2  ) {
 ?>
 		<div class="content">
 			<?php require_once '../partials/header.php'; ?>
@@ -63,7 +65,12 @@
 						<td id="total_price"><b>
 							<?php echo $cart_total; ?>
 						</b></td>
-						<td><button class="btn deep-orange darken-2">Proceed To Checkout</button></td>
+
+						<?php if (isset($_SESSION['logged_in_user'])) { ?>
+          
+						<td><a href="./checkout.php" class="btn deep-orange darken-2">Proceed To Checkout</a></td>
+				   
+				        <?php } ?>
 					</tr>
 				</tfoot>
 				
@@ -84,7 +91,13 @@
 		</div>
 	
 <?php 
+
+		mysqli_close($conn);
 		require_once '../partials/footer.php';
+		}	else {
+
+		header('Location: ./error.php');
+		}
 	}; 
 ?>
 

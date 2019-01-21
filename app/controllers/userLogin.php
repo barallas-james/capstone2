@@ -12,7 +12,7 @@
 	$row = mysqli_fetch_assoc($result);
 
 	if(password_verify($loginPass, $row['password'])){
-		$_SESSION['logged_in_user'] = $loginUser;
+		$_SESSION['logged_in_user'] = $row;
 		echo "login_success";
 
 

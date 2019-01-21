@@ -9,6 +9,7 @@
 	$email = $_POST['email'];
 	$uName = $_POST['uName'];
 	$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+	$roles = 2;
 
 	// retrieve only the data under the username column that
 	// has the same value as the username variable
@@ -18,7 +19,7 @@
 	if(mysqli_num_rows($result) > 0) {
 		die("user_exists");
 	} else {
-		$sql_insert = "INSERT INTO users(fName, lName, address, telephone, cellphone, email, uName, password) VALUES ('$fName', '$lName', '$address', '$telephone', '$cellphone', '$email', '$uName', '$password'); ";
+		$sql_insert = "INSERT INTO users(fName, lName, address, telephone, cellphone, email, uName, password, role_id) VALUES ('$fName', '$lName', '$address', '$telephone', '$cellphone', '$email', '$uName', '$password', '$roles'); ";
 		$result = mysqli_query($conn, $sql_insert);		
 	}
 

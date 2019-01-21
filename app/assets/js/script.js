@@ -5,6 +5,8 @@ $(document).ready(function(){
     $('.dropdown-trigger').dropdown();
     $('.modal').modal();
     $('.tabs').tabs();
+    $('select').formSelect();
+ 
 
   });
 
@@ -153,3 +155,18 @@ $(document).on("click", '.item-remove', (e) => {
 		}
 	});
 });
+
+//delete button
+$(document).on("click", '#update_info', (e) => {
+	$('#update_user_details').submit();
+});
+
+
+$(document).on("click", '.revoke', (e) => {
+	
+	const btnId = $(this).attr('id');
+
+	console.log(btnId);
+});
+
+

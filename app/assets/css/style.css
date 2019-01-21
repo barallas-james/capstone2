@@ -71,7 +71,6 @@
 	color: black;
 }
 
-.card{
-		
+.card .card-image img{
+	height: 300px;
 }
-
