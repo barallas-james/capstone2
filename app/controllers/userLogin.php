@@ -5,10 +5,8 @@
 	$loginUser = $_POST['loginUser'];
 	$loginPass = $_POST['loginPass'];
 
-	
 	$sql = "SELECT * FROM users WHERE uName ='$loginUser' ";
 	$result = mysqli_query($conn, $sql);
-
 	$row = mysqli_fetch_assoc($result);
 
 	if(password_verify($loginPass, $row['password'])){

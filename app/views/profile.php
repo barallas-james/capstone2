@@ -3,7 +3,7 @@ require_once '../partials/layout.php';
 
 function get_page_content() { 
 	
-?>
+	?>
 	<div class="content">
 		<?php require_once '../partials/header.php'; ?>
 
@@ -59,7 +59,7 @@ function get_page_content() {
 
 						$transactions = mysqli_query($conn, $sql);
 						foreach($transactions as $transaction) { 
-						?>
+							?>
 							<tr>
 								<td><?php echo $transaction['transaction_code'] ?></td>
 								<td><?php echo $transaction['purchase_date'] ?></td>
@@ -67,7 +67,7 @@ function get_page_content() {
 								<td><?php echo $transaction['payment_mode'] ?></td>
 							</tr>
 
-						<?php  
+							<?php  
 						}  
 						?>
 					</tbody>
@@ -77,10 +77,10 @@ function get_page_content() {
 	</div>
 
 
-<?php 
+	<?php 
 
-mysqli_close($conn);
-require_once '../partials/footer.php';
+	mysqli_close($conn);
+	require_once '../partials/footer.php';
 }; 
 ?>
 

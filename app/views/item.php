@@ -1,17 +1,17 @@
 <?php 
-	require_once '../partials/layout.php'; 
+require_once '../partials/layout.php'; 
 
 function get_page_content() { 
 
 	if(isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user']['role_id'] == 1) {
-?>
+		?>
 		<div class="content">
 			<?php require_once '../partials/header.php'; ?>
 
-				<div class="container">
-					<div class="row">
-						<a href="./additem.php" class="btn btn-primary">Add New Item</a>
-			
+			<div class="container">
+				<div class="row">
+					<a href="./additem.php" class="btn btn-primary">Add New Item</a>
+
 					<?php 
 					require '../controllers/connect.php';
 
@@ -43,18 +43,11 @@ function get_page_content() {
 							</div>
 						</div>
 					<?php }; ?>
-					</div> <!-- end of row -->
-				</div><!--  end container -->
-
-
-
-
-
-
-			
+				</div> <!-- end of row -->
+			</div><!--  end container -->
 		</div>
 
-<?php 
+		<?php 
 		require_once '../partials/footer.php';
 	}	else {
 

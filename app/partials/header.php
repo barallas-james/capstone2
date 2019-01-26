@@ -4,17 +4,23 @@
       <a href="index.php" class="brand-logo"><b>Soots</b></a>
       <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="catalog.php">Catalog</a></li>
-       <!--  <li><a href="">About</a></li>
-        <li><a href="">Contact Us</a></li> -->
-        <li>
-          <a href="mycart.php">My Cart 
-            <span id="cart-count" class="new badge red darken-4 text-white" data-badge-caption="">
-              <?php if (isset($_SESSION['cart'])){ echo array_sum($_SESSION['cart']); } else{ echo '0'; }?>
-            </span>
-          </a>
-        </li>
+          <li><a href="index.php">Home</a></li>
+
+        <?php 
+
+        if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user']['role_id'] != 1) { 
+          ?>
+          <li><a href="catalog.php">Catalog</a></li>
+      
+          <li>
+            <a href="mycart.php">My Cart 
+              <span id="cart-count" class="new badge red darken-4 text-white" data-badge-caption="">
+                <?php if (isset($_SESSION['cart'])){ echo array_sum($_SESSION['cart']); } else{ echo '0'; }?>
+              </span>
+            </a>
+          </li>
+
+        <?php } ?>
 
         <?php if (isset($_SESSION['logged_in_user'])) { ?>
 
@@ -26,17 +32,8 @@
 
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
-              <li>
-                <a href="profile.php">
-                  Profile
-                </a>
-              </li>
-
-              <li>
-                <a id="userLogout" href="../controllers/userLogout.php">
-                  Logout
-                </a>
-              </li>   
+              <li><a href="profile.php">Profile</a></li>
+              <li><a id="userLogout" href="../controllers/userLogout.php">Logout</a></li>   
             </ul>
           <?php } ?>
 
@@ -48,6 +45,7 @@
 
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="users.php">Users</a></li>
               <li><a href="item.php">Items</a></li>
               <li><a id="userLogout" href="../controllers/userLogout.php">Logout</a></li>   
             </ul>
@@ -73,32 +71,45 @@
   <li><hr></li>
   <li><a href="index.php">Home</a></li>
   <li><a href="catalog.php?category=All">Catalog</a></li>
-<!--   <li><a href="">About</a></li>
-  <li><a href="">Contact Us</a></li> -->
-  <li><a href="mycart.php">My Cart <span id="cart-count" class="new badge red darken-4 text-white" data-badge-caption=""><?php if (isset($_SESSION['cart'])){ echo array_sum($_SESSION['cart']); }?></span></a></li>
-  <?php if (!isset($_SESSION['logged_in_user'])) { ?>
-    <li><a class="waves-effect waves-light btn-large deep-orange darken-2 modal-trigger" href="#login">Login</a></li>
-  <?php } ?>
+
+  <li>
+    <a href="mycart.php">My Cart <span id="cart-count" class="new badge red darken-4 text-white" data-badge-caption="">
+      <?php if (isset($_SESSION['cart'])){ echo array_sum($_SESSION['cart']); }?></span></a></li>
+      <?php if (!isset($_SESSION['logged_in_user'])) { ?>
+        <li>
+          <a class="waves-effect waves-light btn-large deep-orange darken-2 modal-trigger" href="#login">
+            Login
+          </a>
+        </li>
+      <?php } ?>
 
   <?php if (isset($_SESSION['logged_in_user'])) { ?>
     <!-- Dropdown Trigger -->
-    <li><a class='dropdown-trigger btn-large waves-effect waves-light deep-orange darken-2' href='#' data-target='dropdown2'><?php echo $_SESSION['logged_in_user'] ?></a></li>
+    <li>
+      <a class='dropdown-trigger btn-large waves-effect waves-light deep-orange darken-2' href='#' data-target='dropdown2'>
+        <?php echo $_SESSION['logged_in_user']['uName'] ?>
+      </a>
+    </li>
+  <?php } ?>
 
-    <!-- Dropdown Structure -->
-    <li><ul id='dropdown2' class='dropdown-content'>
+  <!-- Dropdown Structure -->
+  <li>
+    <ul id='dropdown2' class='dropdown-content'>
       <li><a href="profile.php">Profile</a></li>
       <li><a id="userLogout" href="../controllers/userLogout.php">Logout</a></li>
-      
-    </ul></li>
-  <?php } ?>
+    </ul>
+  </li>
 </ul>
+
+
+
+
 
 
 <!-- Modal Structure -->
 <div id="login" class="modal">
   <div class="modal-content">
     <h4>Login</h4>
-    
     <div class="row">
       <div class="col s12">
         <div class="row">
@@ -121,16 +132,10 @@
           </div>
         </div>
         <div class="modal-footer">
-         
-          
           <a id="userLogin" class="waves-effect waves-light btn-large deep-orange darken-2">Login</a>
-          
-          
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
 

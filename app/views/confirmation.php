@@ -1,4 +1,4 @@
-<?php require_once '../partials/layout.php'; 
+	<?php require_once '../partials/layout.php'; 
 
 
 function get_page_content() { 
@@ -12,6 +12,8 @@ function get_page_content() {
 
 			<h1>Thank you for choosing Soots Store.</h1>
 			<h3>Your confirmation number is: <?php echo $_SESSION['new_txn_number'];?></h3>
+
+			<a href="catalog.php" class="btn">Continue Shopping</a>
 	</div> <!-- end container -->
 
 </div>
